@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WirelessMedia2018Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dobavljac">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Aktivan" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kategorija">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Aktivan" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Proba2018.dbo.Proizvod' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Proizvod">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdProizvodjac" />
+      <PropertyRef Name="IdDobavljac" />
+      <PropertyRef Name="IdKategorija" />
+      <PropertyRef Name="Naziv" />
+      <PropertyRef Name="Opis" />
+      <PropertyRef Name="Cena" />
+      <PropertyRef Name="VaziOd" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProizvodjac" Type="int" Nullable="false" />
+    <Property Name="IdDobavljac" Type="int" Nullable="false" />
+    <Property Name="IdKategorija" Type="int" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Opis" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="VaziOd" Type="datetime" Nullable="false" />
+    <Property Name="VaziDO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Proizvodjac">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Aktivan" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Proizvod__IdDoba__6A30C649">
+    <End Role="Dobavljac" Type="Self.Dobavljac" Multiplicity="1" />
+    <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dobavljac">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="IdDobavljac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proizvod__IdKate__6B24EA82">
+    <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
+    <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorija">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="IdKategorija" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proizvod__IdProi__693CA210">
+    <End Role="Proizvodjac" Type="Self.Proizvodjac" Multiplicity="1" />
+    <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvodjac">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="IdProizvodjac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SnimiProizvod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdProizvodjac" Type="int" Mode="In" />
+    <Parameter Name="IdDobavljac" Type="int" Mode="In" />
+    <Parameter Name="IdKategorija" Type="int" Mode="In" />
+    <Parameter Name="Naziv" Type="varchar" Mode="In" />
+    <Parameter Name="Opis" Type="varchar" Mode="In" />
+    <Parameter Name="Cena" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="UpdateProizvoda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="NazivProizvoda" Type="varchar" Mode="In" />
+    <Parameter Name="OpisProizvoda" Type="varchar" Mode="In" />
+    <Parameter Name="CenaProizvoda" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="VratiProizvode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VratiProizvodPoId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="WirelessMedia2018ModelStoreContainer">
+    <EntitySet Name="Dobavljac" EntityType="Self.Dobavljac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategorija" EntityType="Self.Kategorija" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proizvodjac" EntityType="Self.Proizvodjac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proizvod" EntityType="Self.Proizvod" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Proizvod].[Id] AS [Id], 
+    [Proizvod].[IdProizvodjac] AS [IdProizvodjac], 
+    [Proizvod].[IdDobavljac] AS [IdDobavljac], 
+    [Proizvod].[IdKategorija] AS [IdKategorija], 
+    [Proizvod].[Naziv] AS [Naziv], 
+    [Proizvod].[Opis] AS [Opis], 
+    [Proizvod].[Cena] AS [Cena], 
+    [Proizvod].[VaziOd] AS [VaziOd], 
+    [Proizvod].[VaziDO] AS [VaziDO]
+    FROM [dbo].[Proizvod] AS [Proizvod]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Proizvod__IdDoba__6A30C649" Association="Self.FK__Proizvod__IdDoba__6A30C649">
+      <End Role="Dobavljac" EntitySet="Dobavljac" />
+      <End Role="Proizvod" EntitySet="Proizvod" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proizvod__IdKate__6B24EA82" Association="Self.FK__Proizvod__IdKate__6B24EA82">
+      <End Role="Kategorija" EntitySet="Kategorija" />
+      <End Role="Proizvod" EntitySet="Proizvod" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proizvod__IdProi__693CA210" Association="Self.FK__Proizvod__IdProi__693CA210">
+      <End Role="Proizvodjac" EntitySet="Proizvodjac" />
+      <End Role="Proizvod" EntitySet="Proizvod" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

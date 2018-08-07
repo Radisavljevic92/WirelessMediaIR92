@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "PocetnaStrana";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/PocetnaStrana")
+<div id="Pocetna" ng-controller="PocetnaStranaCtrl" style="margin-top:7%;">
+    <h2>Lista proizvoda</h2>
+    <table class="table table-striped table-condensed table-hover" ng-show="items.length > 0" style="font-size:12px;">
+        <thead style="background-color:#9dccfb">
+            <tr>
+                <th style="text-align:center;" custom-sort order="'NazivProizvoda'" sort="sort"><b>Naziv Proizvoda</b></th>
+                <th style="text-align:center;" custom-sort order="'OpisProizvoda'" sort="sort"><b>Opis Proizvoda</b></th>
+                <th style="text-align:center;" custom-sort order="'CenaProizvoda'" sort="sort"><b>Cena Proizvoda</b></th>
+                <th style="text-align:center;" custom-sort order="'NazivDobavljaca'" sort="sort"><b>Naziv Dobavljaca</b></th>
+                <th style="text-align:center;" custom-sort order="'NazivProizvodjaca'" sort="sort"><b>Naziv Proizvodjaca</b></th>
+                <th style="text-align:center;" custom-sort order="'NazivKategorije'" sort="sort"><b>Naziv Kategorije</b></th>
+                <th style="text-align:center;">Izmena</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td style="text-align:center;">{{item.NazivProizvoda}}</td>
+                <td style="text-align:center;">{{item.OpisProizvoda}}</td>
+                <td style="text-align:center;">{{item.CenaProizvoda}}</td>
+                <td style="text-align:center;">{{item.NazivDobavljaca}}</td>
+                <td style="text-align:center;">{{item.NazivProizvodjaca}}</td>
+                <td style="text-align:center;">{{item.NazivKategorije}}</td>
+                <td style="text-align:center;"><a style="text-decoration:none; outline:none; cursor: pointer;" ng-click="RedirectIzmena(item.Id)"><img src="~/Content/Images/izmena.png" style="width:20px; height:20px; padding-left:0px;" /></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <button type="button" ng-click="RedirectUnosProizvoda()" class="btn btn-default" style="width:25% !important;color:white; background-color:#0078b4;"><b>Unos novog proizvoda</b></button>
+</div>

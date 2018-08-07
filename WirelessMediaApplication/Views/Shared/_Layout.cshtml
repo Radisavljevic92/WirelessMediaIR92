@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html style="background-color: white !important;">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Scripts.Render("~/bundles/angular")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/angularcss")
+    @Scripts.Render("~/bundles/assets-cache")
+    @Scripts.Render("~/bundles/bower-angular-material")
+    <script src="~/Scripts/angular-upload.min.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-material111.js"></script>
+    <script src="~/Scripts/angular-aria.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/SharedAngular")
+
+</head>
+<body style="background-color: white !important;">
+    <div class="container body-content" style="background-color:white !important;" ng-app="WirelessMediaApplication" ng-cloak>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Wireless Media</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

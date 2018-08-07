@@ -1,0 +1,10 @@
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EfWirelessMedia.Entity.dll.config
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EfWirelessMedia.Entity.dll
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EfWirelessMedia.Entity.pdb
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EntityFramework.dll
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EntityFramework.xml
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\obj\Debug\EfWirelessMedia.Entity.dll
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\obj\Debug\EfWirelessMedia.Entity.pdb
+C:\Users\i.radisavljevic\Desktop\PROJEKAT\PROJEKAT\WirelessMediaApplication\EfWirelessMedia.Entity\obj\Debug\EfWirelessMedia.Entity.csprojResolveAssemblyReference.cache

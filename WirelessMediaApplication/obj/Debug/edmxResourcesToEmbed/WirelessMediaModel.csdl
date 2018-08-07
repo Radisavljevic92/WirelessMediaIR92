@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WirelessMedia2018Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dobavljac">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aktivan" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Proizvod" Relationship="Self.FK__Proizvod__IdDoba__6A30C649" FromRole="Dobavljac" ToRole="Proizvod" />
+  </EntityType>
+  <EntityType Name="Kategorija">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aktivan" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Proizvod" Relationship="Self.FK__Proizvod__IdKate__6B24EA82" FromRole="Kategorija" ToRole="Proizvod" />
+  </EntityType>
+  <EntityType Name="Proizvodjac">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aktivan" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Proizvod" Relationship="Self.FK__Proizvod__IdProi__693CA210" FromRole="Proizvodjac" ToRole="Proizvod" />
+  </EntityType>
+  <EntityType Name="Proizvod">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdProizvodjac" />
+      <PropertyRef Name="IdDobavljac" />
+      <PropertyRef Name="IdKategorija" />
+      <PropertyRef Name="Naziv" />
+      <PropertyRef Name="Opis" />
+      <PropertyRef Name="Cena" />
+      <PropertyRef Name="VaziOd" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProizvodjac" Type="Int32" Nullable="false" />
+    <Property Name="IdDobavljac" Type="Int32" Nullable="false" />
+    <Property Name="IdKategorija" Type="Int32" Nullable="false" />
+    <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Opis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="VaziOd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VaziDO" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Dobavljac" Relationship="Self.FK__Proizvod__IdDoba__6A30C649" FromRole="Proizvod" ToRole="Dobavljac" />
+    <NavigationProperty Name="Kategorija" Relationship="Self.FK__Proizvod__IdKate__6B24EA82" FromRole="Proizvod" ToRole="Kategorija" />
+    <NavigationProperty Name="Proizvodjac" Relationship="Self.FK__Proizvod__IdProi__693CA210" FromRole="Proizvod" ToRole="Proizvodjac" />
+  </EntityType>
+  <Association Name="FK__Proizvod__IdDoba__6A30C649">
+    <End Role="Dobavljac" Type="Self.Dobavljac" Multiplicity="1" />
+    <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dobavljac">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="IdDobavljac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proizvod__IdKate__6B24EA82">
+    <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
+    <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorija">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="IdKategorija" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proizvod__IdProi__693CA210">
+    <End Role="Proizvodjac" Type="Self.Proizvodjac" Multiplicity="1" />
+    <End Role="Proizvod" Type="Self.Proizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvodjac">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="IdProizvodjac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WirelessMedia2018Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dobavljac" EntityType="Self.Dobavljac" />
+    <EntitySet Name="Kategorija" EntityType="Self.Kategorija" />
+    <EntitySet Name="Proizvodjac" EntityType="Self.Proizvodjac" />
+    <EntitySet Name="Proizvod" EntityType="Self.Proizvod" />
+    <AssociationSet Name="FK__Proizvod__IdDoba__6A30C649" Association="Self.FK__Proizvod__IdDoba__6A30C649">
+      <End Role="Dobavljac" EntitySet="Dobavljac" />
+      <End Role="Proizvod" EntitySet="Proizvod" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proizvod__IdKate__6B24EA82" Association="Self.FK__Proizvod__IdKate__6B24EA82">
+      <End Role="Kategorija" EntitySet="Kategorija" />
+      <End Role="Proizvod" EntitySet="Proizvod" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proizvod__IdProi__693CA210" Association="Self.FK__Proizvod__IdProi__693CA210">
+      <End Role="Proizvodjac" EntitySet="Proizvodjac" />
+      <End Role="Proizvod" EntitySet="Proizvod" />
+    </AssociationSet>
+    <FunctionImport Name="SnimiProizvod" ReturnType="Collection(WirelessMedia2018Model.SnimiProizvod_Result)">
+      <Parameter Name="IdProizvodjac" Mode="In" Type="Int32" />
+      <Parameter Name="IdDobavljac" Mode="In" Type="Int32" />
+      <Parameter Name="IdKategorija" Mode="In" Type="Int32" />
+      <Parameter Name="Naziv" Mode="In" Type="String" />
+      <Parameter Name="Opis" Mode="In" Type="String" />
+      <Parameter Name="Cena" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateProizvoda" ReturnType="Collection(WirelessMedia2018Model.UpdateProizvoda_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="NazivProizvoda" Mode="In" Type="String" />
+      <Parameter Name="OpisProizvoda" Mode="In" Type="String" />
+      <Parameter Name="CenaProizvoda" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="VratiProizvode" ReturnType="Collection(WirelessMedia2018Model.VratiProizvode_Result)" />
+    <FunctionImport Name="VratiProizvodPoId" ReturnType="Collection(WirelessMedia2018Model.VratiProizvodPoId_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SnimiProizvod_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdProizvodjac" Nullable="false" />
+    <Property Type="Int32" Name="IdDobavljac" Nullable="false" />
+    <Property Type="Int32" Name="IdKategorija" Nullable="false" />
+    <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Opis" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Cena" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="VaziOd" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="VaziDO" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="UpdateProizvoda_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdProizvodjac" Nullable="false" />
+    <Property Type="Int32" Name="IdDobavljac" Nullable="false" />
+    <Property Type="Int32" Name="IdKategorija" Nullable="false" />
+    <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Opis" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Cena" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="VaziOd" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="VaziDO" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="VratiProizvode_Result">
+    <Property Type="String" Name="NazivProizvoda" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="OpisProizvoda" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="CenaProizvoda" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="NazivDobavljaca" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="NazivProizvodjaca" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="NazivKategorije" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="VratiProizvodPoId_Result">
+    <Property Type="String" Name="NazivProizvoda" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="OpisProizvoda" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="CenaProizvoda" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="NazivDobavljaca" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="NazivProizvodjaca" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="NazivKategorije" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+  </ComplexType>
+</Schema>

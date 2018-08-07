@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "IzmenaProizvoda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/IzmenaProizvoda")
+<h2>Izmena proizvoda</h2>
+<div ng-controller="IzmenaProizvodaCtrl" ng-init="init(@ViewBag.IdProizvoda)" ng-cloak style="margin-top:7%;">
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Naziv proizvoda:</label>
+        </div>
+        <div class="col-sm-2 flex-gt-xs">
+            <input placeholder="Naziv Proizvoda" type="text" ng-model="Proizvod.NazivProizvoda" class="form-control" style="height: 34px;" />
+        </div>
+        <div class="col-sm-2">
+            <label> Opis proizvoda:</label>
+        </div>
+        <div class="col-sm-6">
+            <input placeholder="Opis proizvoda" type="text" ng-model="Proizvod.OpisProizvoda" class="form-control" style="height: 34px;" />
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Cena proizvoda:</label>
+        </div>
+        <div class="col-sm-2" flex-gt-xs>
+            <input placeholder="Cena  proizvoda" type="number" ng-model="Proizvod.CenaProizvoda" class="form-control" style="height: 34px;" />
+        </div>
+
+    </div>
+    <br />
+    <button type="button" ng-click="SnimiPromenu(Id)" class="btn btn-default" style="width:25% !important;color:white; background-color:#0078b4;"><b>Snimi promenu</b></button>
+
+</div>
+

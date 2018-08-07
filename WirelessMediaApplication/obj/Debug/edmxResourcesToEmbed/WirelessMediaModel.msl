@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WirelessMedia2018ModelStoreContainer" CdmEntityContainer="WirelessMedia2018Entities">
+    <EntitySetMapping Name="Dobavljac">
+      <EntityTypeMapping TypeName="WirelessMedia2018Model.Dobavljac">
+        <MappingFragment StoreEntitySet="Dobavljac">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Aktivan" ColumnName="Aktivan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategorija">
+      <EntityTypeMapping TypeName="WirelessMedia2018Model.Kategorija">
+        <MappingFragment StoreEntitySet="Kategorija">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Aktivan" ColumnName="Aktivan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvodjac">
+      <EntityTypeMapping TypeName="WirelessMedia2018Model.Proizvodjac">
+        <MappingFragment StoreEntitySet="Proizvodjac">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Aktivan" ColumnName="Aktivan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvod">
+      <EntityTypeMapping TypeName="WirelessMedia2018Model.Proizvod">
+        <MappingFragment StoreEntitySet="Proizvod">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProizvodjac" ColumnName="IdProizvodjac" />
+          <ScalarProperty Name="IdDobavljac" ColumnName="IdDobavljac" />
+          <ScalarProperty Name="IdKategorija" ColumnName="IdKategorija" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="VaziOd" ColumnName="VaziOd" />
+          <ScalarProperty Name="VaziDO" ColumnName="VaziDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SnimiProizvod" FunctionName="WirelessMedia2018Model.Store.SnimiProizvod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WirelessMedia2018Model.SnimiProizvod_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProizvodjac" ColumnName="IdProizvodjac" />
+          <ScalarProperty Name="IdDobavljac" ColumnName="IdDobavljac" />
+          <ScalarProperty Name="IdKategorija" ColumnName="IdKategorija" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="VaziOd" ColumnName="VaziOd" />
+          <ScalarProperty Name="VaziDO" ColumnName="VaziDO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateProizvoda" FunctionName="WirelessMedia2018Model.Store.UpdateProizvoda">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WirelessMedia2018Model.UpdateProizvoda_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProizvodjac" ColumnName="IdProizvodjac" />
+          <ScalarProperty Name="IdDobavljac" ColumnName="IdDobavljac" />
+          <ScalarProperty Name="IdKategorija" ColumnName="IdKategorija" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="VaziOd" ColumnName="VaziOd" />
+          <ScalarProperty Name="VaziDO" ColumnName="VaziDO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VratiProizvode" FunctionName="WirelessMedia2018Model.Store.VratiProizvode">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WirelessMedia2018Model.VratiProizvode_Result">
+          <ScalarProperty Name="NazivProizvoda" ColumnName="NazivProizvoda" />
+          <ScalarProperty Name="OpisProizvoda" ColumnName="OpisProizvoda" />
+          <ScalarProperty Name="CenaProizvoda" ColumnName="CenaProizvoda" />
+          <ScalarProperty Name="NazivDobavljaca" ColumnName="NazivDobavljaca" />
+          <ScalarProperty Name="NazivProizvodjaca" ColumnName="NazivProizvodjaca" />
+          <ScalarProperty Name="NazivKategorije" ColumnName="NazivKategorije" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VratiProizvodPoId" FunctionName="WirelessMedia2018Model.Store.VratiProizvodPoId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WirelessMedia2018Model.VratiProizvodPoId_Result">
+          <ScalarProperty Name="NazivProizvoda" ColumnName="NazivProizvoda" />
+          <ScalarProperty Name="OpisProizvoda" ColumnName="OpisProizvoda" />
+          <ScalarProperty Name="CenaProizvoda" ColumnName="CenaProizvoda" />
+          <ScalarProperty Name="NazivDobavljaca" ColumnName="NazivDobavljaca" />
+          <ScalarProperty Name="NazivProizvodjaca" ColumnName="NazivProizvodjaca" />
+          <ScalarProperty Name="NazivKategorije" ColumnName="NazivKategorije" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

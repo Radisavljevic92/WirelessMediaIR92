@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Unos novog proizvoda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/UnosNovogProizvoda")
+<h2>Unos novog proizvoda</h2>
+<div ng-controller="UnosProizvodaCtrl" ng-cloak style="margin-top:7%;">
+    <div class="row">
+        <div class='col-sm-2'>
+            <div class="form-group">
+                <label>Proizvodjač:</label>
+            </div>
+        </div>
+        <div class='col-sm-3'>
+            <div class="form-group">
+                <select ng-model="Proizvod.NazivProizvodjaca" ng-options="p.Id as p.Naziv for p in proizvodjac" class="form-control" ng-change="ProizvodjacChange()">
+                    <option value="">-Izaberite Proizvodjača-</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-sm-2'>
+            <div class="form-group">
+                <label>Dobavljač:</label>
+            </div>
+        </div>
+        <div class='col-sm-3'>
+            <div class="form-group">
+                <select ng-model="Proizvod.NazivDobavljaca" ng-options="d.Id as d.Naziv for d in dobavljac" class="form-control" ng-change="DobavljacChange()">
+                    <option value="">-Izaberite dobavljača-</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-sm-2'>
+            <div class="form-group">
+                <label>Kategorija:</label>
+            </div>
+        </div>
+        <div class='col-sm-3'>
+            <div class="form-group">
+                <select ng-model="Proizvod.NazivKategorije" ng-options="k.Id as k.Naziv for k in kategorija" class="form-control" ng-change="KategorijaChange()">
+                    <option value="">-Izaberite ktegoriju-</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Naziv proizvoda:</label>
+        </div>
+        <div class="col-sm-2 flex-gt-xs">
+            <input placeholder="Naziv Proizvoda" type="text" ng-model="Proizvod.NazivProizvoda" class="form-control" style="height: 34px;" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-2">
+            <label> Opis proizvoda:</label>
+        </div>
+        <div class="col-sm-6">
+            <input placeholder="Opis proizvoda" type="text" ng-model="Proizvod.OpisProizvoda" class="form-control" style="height: 34px;" />
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Cena proizvoda:</label>
+        </div>
+        <div class="col-sm-2" flex-gt-xs>
+            <input placeholder="Cena  proizvoda" type="number" ng-model="Proizvod.CenaProizvoda" class="form-control" style="height: 34px;" />
+        </div>
+    </div>
+    <br />
+
+    <button type="button" ng-click="SnimiProizvod()" class="btn btn-default" style="width:25% !important;color:white; background-color:#0078b4;"><b>Snimi proizvod</b></button>
+
+</div>
